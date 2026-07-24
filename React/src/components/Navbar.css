@@ -1,0 +1,85 @@
+.navbar {
+  background: #a8d5ba; /* the mint green from the mockup */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+}
+
+.navbar__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: monospace;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar__links ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar__links a {
+  color: #1e2b24;
+  font-weight: 500;
+  font-size: 17px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar__links a:hover,
+.navbar__links a:focus-visible {
+  color: #2f5d4c;
+  text-decoration: underline;
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile below */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__toggle span {
+  width: 26px;
+  height: 3px;
+  background: #1e2b24;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__links {
+    /* Hidden by default on mobile until the menu is toggled open */
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: #a8d5ba;
+    padding: 16px 24px;
+  }
+
+  .navbar__links--open {
+    display: block;
+  }
+
+  .navbar__links ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
