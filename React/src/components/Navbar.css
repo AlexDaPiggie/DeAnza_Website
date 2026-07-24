@@ -1,77 +1,94 @@
 .navbar {
-  background: #a8d5ba; /* the mint green from the mockup */
+  height: 150px;
+  background-color: #c9f3e3;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
+  gap: 55px;
+  padding: 0 45px;
 }
 
 .navbar__logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #0d0d0d;
-  color: #fff;
-  font-family: monospace;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.navbar__logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.navbar__links {
+  flex: 1;
 }
 
 .navbar__links ul {
-  list-style: none;
   display: flex;
-  gap: 40px;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar__links a {
-  color: #1e2b24;
-  font-weight: 500;
-  font-size: 17px;
+  color: black;
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: 24px;
+  font-weight: 500;
 }
 
-.navbar__links a:hover,
-.navbar__links a:focus-visible {
-  color: #2f5d4c;
+.navbar__links a:hover {
+  color: #0077aa;
   text-decoration: underline;
 }
 
-/* Hamburger button — hidden on desktop, shown on mobile below */
 .navbar__toggle {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
 }
 
 .navbar__toggle span {
-  width: 26px;
+  display: block;
+  width: 28px;
   height: 3px;
-  background: #1e2b24;
-  border-radius: 2px;
+  background-color: black;
+  margin: 6px 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
+  .navbar {
+    height: auto;
+    min-height: 110px;
+    padding: 20px;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .navbar__logo {
+    width: 90px;
+    height: 90px;
+  }
+
   .navbar__toggle {
-    display: flex;
+    display: block;
   }
 
   .navbar__links {
-    /* Hidden by default on mobile until the menu is toggled open */
     display: none;
     position: absolute;
-    top: 90px;
+    top: 110px;
     left: 0;
-    right: 0;
-    background: #a8d5ba;
-    padding: 16px 24px;
+    width: 100%;
+    background-color: #c9f3e3;
+    padding: 20px 0;
   }
 
   .navbar__links--open {
@@ -81,5 +98,9 @@
   .navbar__links ul {
     flex-direction: column;
     gap: 20px;
+  }
+
+  .navbar__links a {
+    font-size: 20px;
   }
 }
