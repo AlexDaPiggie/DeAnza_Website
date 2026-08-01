@@ -1,39 +1,63 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import './Home.css';
+import InfoCard from '../components/InfoCard'
+import registrationCard from '../assets/registration-card.png'
+import transferringCard from '../assets/transferring-card.png'
+import vtaCard from '../assets/vta-card.png'
+import campusMapCard from '../assets/campus-map-card.png'
 
-// Same 4 quick-link cards from the mockup. Kept as data (instead of
-// 4 separate blocks of JSX) so adding a 5th card later is a one-line
-// change, same idea as the NAV_LINKS array in Navbar.jsx.
-const QUICK_LINKS = [
-  { id: 'registration', label: 'Student Registration', icon: '📝', href: '#registration' },
-  { id: 'transfer', label: 'Transferring Information', icon: '🎓', href: '#transfer' },
-  { id: 'vta', label: 'VTA Card', icon: '🚌', href: '#vta' },
-  { id: 'map', label: 'Campus Map', icon: '🗺️', href: '#map' },
-];
+const cards = [
+  [
+    '/registration',
+    'Student Registration',
+    'Plan your classes and complete registration steps.',
+    registrationCard,
+    'Student registration guidance',
+  ],
+  [
+    '/transferring',
+    'Transferring',
+    'Explore ASSIST, TAG, and transfer resources.',
+    transferringCard,
+    'Transfer planning guidance',
+  ],
+  [
+    '/vta-card',
+    'VTA Card',
+    'Learn how to use your student SmartPass.',
+    vtaCard,
+    'VTA SmartPass guidance',
+  ],
+  [
+    '/campus-map',
+    'Campus Map',
+    'Find campus buildings, services, and parking.',
+    campusMapCard,
+    'De Anza campus map',
+  ],
+]
 
-function Home() {
+export default function Home() {
   return (
-    <>
-      <Navbar />
-
-      <section className="hero">
-        <h1>Welcome to De Anza College!</h1>
-        <p>We are here to help you prepare for your study at De Anza College</p>
+    <div className="page-shell home">
+      <section className="home-hero">
+        <p className="eyebrow">De Anza College</p>
+        <h1 className="serif-title">Welcome to De Anza</h1>
+        <p style={{ color: 'var(--ink-muted)', fontSize: '1.15rem', maxWidth: '600px', margin: '0 auto' }}>
+          We are here to help you prepare for your study at De Anza College with clear, step-by-step guides.
+        </p>
       </section>
 
-      <section className="card-grid">
-        {QUICK_LINKS.map((link) => (
-          <a key={link.id} className={`card card--${link.id}`} href={link.href}>
-            <div className="card-visual">{link.icon}</div>
-            <div className="card-label">{link.label}</div>
-          </a>
+      <section className="card-grid" aria-label="Student resources">
+        {cards.map(([to, title, description, image, alt]) => (
+          <InfoCard
+            key={to}
+            to={to}
+            title={title}
+            description={description}
+            image={image}
+            alt={alt}
+          />
         ))}
       </section>
-
-      <Footer />
-    </>
-  );
+    </div>
+  )
 }
-
-export default Home;

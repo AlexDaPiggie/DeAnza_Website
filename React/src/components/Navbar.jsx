@@ -1,55 +1,77 @@
-import { useState } from 'react';
-import './Navbar.css';
+import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+import logo from '../assets/deanza-logo.png'
+import { Menu, X } from 'lucide-react'
 
-const NAV_LINKS = [
-  { label: 'Student Registration', href: '#registration' },
-  { label: 'Transferring', href: '#transfer' },
-  { label: 'VTA Card', href: '#vta' },
-  { label: 'Campus Map', href: '#map' },
-  { label: 'About Us', href: '#about' },
-];
+const navigation = [
+  ['/registration', 'Student Registration'],
+  ['/transferring', 'Transferring'],
+  ['/vta-card', 'VTA Card'],
+  ['/campus-map', 'Campus Map'],
+  ['/about', 'About Us'],
+]
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  function toggleMenu() {
-    setIsMenuOpen((open) => !open);
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const links = (mobile = false) =>
+    navigation.map(([to, label]) => (
+      <NavLink
+        key={to}
+        to={to}
+        onClick={mobile ? () => setIsMenuOpen(false) : undefined}
+      >
+        {label}
+      </NavLink>
+    ))
 
   return (
-    <header className="navbar">
-      <a href="#home" className="navbar__logo" aria-label="Home">
-        <img
-          src="/Main.Cpp_logo.png"
-          alt="main.cpp logo"
-          className="navbar__logoImage"
-        />
-      </a>
+    <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
+      <nav className="site-nav">
+        <div className="nav-container">
+          <NavLink className="brand" to="/" aria-label="De Anza home">
+            <img src={logo} alt="De Anza College" />
+          </NavLink>
 
-      <button
-        className="navbar__toggle"
-        onClick={toggleMenu}
-        aria-expanded={isMenuOpen}
-        aria-label="Toggle navigation menu"
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            {links()}
+          </nav>
 
-      <nav className={`navbar__links ${isMenuOpen ? 'navbar__links--open' : ''}`}>
-        <ul>
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} onClick={() => setIsMenuOpen(false)}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-controls="mobile-menu"
+            aria-expanded={isMenuOpen}
+            aria-label={
+              isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+            }
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          <nav
+            id="mobile-menu"
+            className={`mobile-nav ${isMenuOpen ? 'is-open' : ''}`}
+            aria-label="Mobile navigation"
+          >
+            {links(true)}
+          </nav>
+        </div>
       </nav>
     </header>
-  );
+  )
 }
-
-export default Navbar;
