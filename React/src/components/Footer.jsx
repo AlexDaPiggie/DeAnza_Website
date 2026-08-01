@@ -36,7 +36,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:main.cppDeanza@gmail.com">
+              <a href="https://mail.google.com/mail/u/0/?fs=1&to=main.cppDeanza@gmail.com&tf=cm" target="_blank" rel="noreferrer">
                 Email Us
               </a>
             </li>

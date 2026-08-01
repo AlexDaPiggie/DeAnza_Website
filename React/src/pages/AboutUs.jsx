@@ -32,7 +32,7 @@ export default function AboutUs() {
           </li>
           <li className="timeline-item" style={{ marginBottom: '1.5rem' }}>
              <span className="timeline-badge" style={{ width: '1rem', height: '1rem', left: '-2.25rem', backgroundColor: 'var(--accent)' }}></span>
-            <a href="mailto:main.cppDeanza@gmail.com" style={{ fontSize: '1.1rem' }}>
+            <a href="https://mail.google.com/mail/u/0/?fs=1&to=main.cppDeanza@gmail.com&tf=cm" target="_blank" rel="noreferrer" style={{ fontSize: '1.1rem' }}>
               main.cppDeanza@gmail.com
             </a>
           </li>
