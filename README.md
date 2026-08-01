@@ -4,6 +4,6 @@
 Final Deployed Website (Vercel): [Click Here](https://student-guide-main-cpp.vercel.app/)
 
 ## Prototype
-Original Figma Design: [Click Here](https://www.figma.com/files/team/1660046476433580239/project/627189639?fuid=1568266080833914528)
+Original Figma Design: [Click Here](https://www.figma.com/design/uQmqiEgLdIBsfNGRjbCk8t/DeAnza_Website?node-id=0-1&t=v78mJd4Ecehe6rkP-1)
 
 Prototype Design From Figma: [Click Here](https://main-cpp-de-anza.github.io/DeAnza_Website/)
